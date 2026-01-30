@@ -1,0 +1,40 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# === Packaging Python ===
+*.egg-info/
+build/
+dist/
+
+# === Environnement virtuel ===
+env/
+venv/
+.venv/
+
+# === Fichiers secrets ===
+.env
+*.env
+
+# === Éditeurs de code ===
+.vscode/
+.idea/
+*.swp
+
+# === Fichiers de logs, tests, caches ===
+*.log
+*.tmp
+.cache/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+htmlcov/
+
+# === Données de projet ===
+*.sqlite3           # bases de données locales
+*.db
+*.json              # si données temporaires
+*.csv               # idembp_project

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = ""
+version = "1.0.0"
+description = "Terminal-based grid game in which a player must survive in a maze populated by hostile robots."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [""]
+
+authors = [
+  { name = "Quentin Eude", email = "" }
+]
+
+[project.urls]
+Homepage = "https://github.com/Sirrah/fileOrganizer"
+Repository = "https://github.com/Sirrah/fileOrganizer"
+
+[project.scripts]
+x-y = "x_y.cli:main"
