@@ -360,12 +360,18 @@ def update_robot_positions(game_screen, robots_pos, player_pos):
         if game_screen.get((new_x, new_y)) == asset_symbols["destroyed_robot"]:
             # Robot is destroyed
             game_screen[robot_pos] = " "
+            robots_pos.remove(robot_pos)
             continue
 
-        # Move robot
-        game_screen[robot_pos] = " "
-        game_screen[(new_x, new_y)] = asset_symbols["robot"]
+        # Add robot
         new_robots_pos.append((new_x, new_y))
+
+    # Update game screen at once after all moves
+    for robot_pos in robots_pos:
+        if game_screen.get(robot_pos) == asset_symbols["robot"]:
+            game_screen[robot_pos] = " "
+    for robot_pos in new_robots_pos:
+        game_screen[robot_pos] = asset_symbols["robot"]
 
     return new_robots_pos
 
