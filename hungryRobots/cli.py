@@ -162,7 +162,7 @@ def get_possible_moves(game_screen, player_pos):
     Returns:
         list: A list of possible move keys (e.g., ["Q", "W", "E", ...]).
     """
-    possible_moves = []
+    possible_moves = ["S"]  # Staying still is always possible
 
     for key, (dx, dy) in directions.items():
         new_x = player_pos[0] + dx
@@ -344,6 +344,8 @@ def update_robot_positions(game_screen, robots_pos, player_pos):
                     new_x = robot_pos[0]
                     new_y = robot_pos[1]
                     break
+            else:
+                break
 
         # Check for collision with player
         if (new_x, new_y) == player_pos:
@@ -381,7 +383,7 @@ def main():
     input("Press Enter to start the game...")
     game_screen, player_pos, robots_pos = get_starting_screen(width, height)
 
-    while True:
+    while robots_pos:
         possible_moves = get_possible_moves(game_screen, player_pos)
 
         # Clear screen and display
@@ -397,7 +399,7 @@ def main():
 
         # Get player move
         while True:
-            move = input("Enter your move (or Quit): ").upper()
+            move = input(" " * x_offset + "Enter your move (or Quit): ").upper()
             if (
                 move in possible_moves
                 or (move == "T" and teleport_charges > 0)
@@ -413,22 +415,24 @@ def main():
 
         # Check for quit
         if move == "QUIT":
-            break
+            print("Thanks for playing!")
+            sys.exit()
 
         # Update positions
         if move != "S":
             player_pos = update_player_position(game_screen, player_pos, move)
         robots_pos = update_robot_positions(game_screen, robots_pos, player_pos)
 
-    print("Thanks for playing!")
+    # Player wins
+    os.system("cls" if os.name == "nt" else "clear")
+    print("Congratulations! You have destroyed all the robots and won the game!")
     sys.exit()
 
 
 if __name__ == "__main__":
     main()
 
-# add quit option
 # J'ai bien fait de traiter le "S" separement ?
 # global teleport_charges -- Necessary ?
-# Verif collision avec robots consid dans possible moves ?
+
 # La def game_over() est-elle bien placée ?
