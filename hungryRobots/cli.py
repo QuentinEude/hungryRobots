@@ -431,8 +431,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# J'ai bien fait de traiter le "S" separement ?
-# global teleport_charges -- Necessary ?
-
-# La def game_over() est-elle bien placée ?
